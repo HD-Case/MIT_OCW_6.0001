@@ -1,1 +1,25 @@
+annual_salary = int(input("Enter your annual salary: "))
+portion_saved = float(input("How much will you save per month (enter as a decimal): "))
 
+
+total_cost = 1000000
+annual_return = 0.04
+semi_annual_raise = 0.07
+current_savings = 0.0
+
+monthly_salary = annual_salary / 12
+portion_down_payment = total_cost * 0.25
+monthly_savings = (annual_salary / 12.0) * portion_saved
+
+months = 0
+while current_savings < portion_down_payment:
+    months += 1 #Why does this placement cause it to take months longer?
+    current_savings += current_savings*(annual_return / 12.0)
+    current_savings += monthly_savings
+    
+    if months % 6 == 0:
+        annual_salary += annual_salary*semi_annual_raise
+        monthly_savings = (annual_salary / 12.0) * portion_saved
+    #months += 1
+
+print("Number of months: ", months)
